@@ -1,0 +1,173 @@
+{
+  "header": {
+    "home": "Home",
+    "news": "News",
+    "about": "About Us",
+    "faq": "FAQ",
+    "contact": "Contact Us",
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile"
+  },
+  "hero": {
+    "title": "Information System\nFor Universities' Quality Assurance Units",
+    "subtitle": "Striving for academic excellence according to global quality standards",
+    "cta": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "news": {
+    "title": "Latest News",
+    "subtitle": "Follow our latest news and updates",
+    "readMore": "Read More",
+    "articles": [
+      {
+        "id": 1,
+        "title": "Navigation and fishing operations suspended at Burullus Port due to bad weather",
+        "description": "We are excited to announce the launch of our new product that will revolutionize the way you work",
+        "date": "Cairo, January 14, 2026",
+        "category": "Local",
+        "image": "/news-1.jpg"
+      },
+      {
+        "id": 2,
+        "title": "African presence expected in NBA All-Stars 2026 before voting closes",
+        "description": "Check out the latest updates and new features we've added to the platform",
+        "date": "Cairo, January 14, 2026",
+        "category": "Science & Tech",
+        "image": "/news-2.jpg"
+      },
+      {
+        "id": 3,
+        "title": "Central Kafr El-Sheikh sector in action: Sidi Salem supplies with agriculture",
+        "description": "We've announced a new partnership with leading companies to deliver the best services",
+        "date": "Cairo, January 14, 2026",
+        "category": "General Tips",
+        "image": "/news-3.jpg"
+      },
+      {
+        "id": 4,
+        "title": "Second International Palestine Forum for electricity supply to Gaza discusses partnership",
+        "description": "We work to provide the best solutions for our clients",
+        "date": "Cairo, January 14, 2026",
+        "category": "General Tips",
+        "image": "/news-4.jpg"
+      },
+      {
+        "id": 5,
+        "title": "Navigation and fishing operations continue to be suspended at Burullus Port",
+        "description": "Follow the latest local and international news",
+        "date": "Cairo, January 14, 2026",
+        "category": "Local",
+        "image": "/news-5.jpg"
+      }
+    ]
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Get to know us better",
+    "description": "We are a leading technology company, working to provide innovative solutions that help businesses grow and evolve. Our professional team includes experts in various technical fields.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide innovative technical solutions that help our clients achieve their goals"
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the first choice for companies seeking technical excellence"
+    },
+    "values": {
+      "title": "Our Values",
+      "description": "Innovation, quality, and commitment to providing the best customer experience"
+    },
+    "goals": {
+      "title": "System Goals",
+      "items": [
+        "Support quality assurance units in managing and organizing all quality activities electronically",
+        "Promote the culture of quality and accreditation among faculty members, students, and staff",
+        "Organize and distribute quality tasks and monitor their accurate implementation",
+        "Create and manage quality files and assess them easily",
+        "Conduct electronic surveys and analyze their results statistically",
+        "Receive complaints and suggestions and prepare reports on them",
+        "Prepare comprehensive periodic reports supporting accreditation requirements",
+        "Improve communication between all parties in the educational system",
+        "Support decision makers through accurate reports and analysis"
+      ]
+    },
+    "targetAudience": {
+      "title": "Target Audience",
+      "subtitle": "The system serves all parties involved in the quality system within Egyptian universities",
+      "groups": [
+        "Quality assurance units in faculties",
+        "Faculty members",
+        "Teaching assistants",
+        "Administrative staff",
+        "Students",
+        "Quality unit reviewers"
+      ]
+    },
+    "whyThisSystem": {
+      "title": "Why This System?",
+      "reasons": [
+        "Complies with quality and accreditation standards adopted in Egyptian universities",
+        "Provides a unified and secure digital work environment",
+        "Reduces effort and time spent on paperwork",
+        "Enables monitoring and evaluation anytime, anywhere",
+        "Scalable and applicable to multiple faculties or universities"
+      ]
+    },
+    "team": {
+      "title": "About the Team",
+      "description": "This system was designed and developed by a specialized team of students from the Faculty of Computers and Information, as part of an applied academic project aimed at linking theoretical study with practical application, and providing a realistic technical solution that serves the educational community. The team relied on the latest concepts of software engineering, systems analysis, and database design, with commitment to professional standards in building information systems, so that the system comes out in a professional form that is capable of development and actual application within educational institutions."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What services do you offer?",
+        "answer": "We offer a wide range of technical services including web development, mobile applications, and cloud solutions."
+      },
+      {
+        "id": 2,
+        "question": "How long does project implementation take?",
+        "answer": "The duration varies depending on the size and requirements of the project, typically ranging from 4-12 weeks."
+      },
+      {
+        "id": 3,
+        "question": "Do you provide technical support after delivery?",
+        "answer": "Yes, we provide full technical support for 6 months after delivery, with the option to extend."
+      },
+      {
+        "id": 4,
+        "question": "What is the cost of services?",
+        "answer": "The cost depends on project requirements. We offer a free consultation to assess your needs and provide a custom quote."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help you",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "message": "Your Message",
+      "send": "Send",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully!",
+      "error": "An error occurred, please try again"
+    },
+    "info": {
+      "address": "Riyadh, Saudi Arabia",
+      "email": "info@example.com",
+      "phone": "+966 50 123 4567"
+    }
+  },
+  "footer": {
+    "description": "We provide the best technical solutions for our clients",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
+    "copyright": "All rights reserved"
+  }
+}

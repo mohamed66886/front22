@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Multilingual Website - موقع متعدد اللغات
 
-## Getting Started
+موقع حديث متعدد اللغات (عربي/إنجليزي) مبني باستخدام Next.js 15، TypeScript، و Tailwind CSS.
 
-First, run the development server:
+## ✨ المميزات
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🌍 **دعم متعدد اللغات**: العربية والإنجليزية مع دعم RTL/LTR
+- 🎨 **تصميم عصري**: واجهة مستخدم حديثة وجذابة
+- 📱 **متجاوب تماماً**: يعمل على جميع الأحجام من الموبايل إلى الديسكتوب
+- 🌙 **الوضع الليلي**: دعم كامل للوضع الليلي
+- ⚡ **أداء عالي**: مبني على Next.js 15 مع Turbopack
+- 🎯 **SEO محسّن**: هيكل محسّن لمحركات البحث
+
+## 🏗️ هيكل المشروع
+
+```
+src/
+├── app/
+│   ├── [locale]/          # المسارات الديناميكية حسب اللغة
+│   │   ├── layout.tsx     # Layout للغة محددة
+│   │   └── page.tsx       # الصفحة الرئيسية
+│   ├── globals.css        # الأنماط العامة
+│   ├── layout.tsx         # Root Layout
+│   └── page.tsx           # توجيه إلى اللغة الافتراضية
+├── components/            # جميع المكونات
+│   ├── Header.tsx         # شريط التنقل العلوي
+│   ├── Hero.tsx           # قسم البطل
+│   ├── LatestNews.tsx     # آخر الأخبار
+│   ├── AboutUs.tsx        # من نحن
+│   ├── FAQ.tsx            # الأسئلة الشائعة
+│   ├── ContactUs.tsx      # تواصل معنا
+│   └── Footer.tsx         # التذييل
+├── i18n/                  # نظام الترجمة
+│   ├── config.ts          # إعدادات اللغات
+│   ├── utils.ts           # دوال مساعدة
+│   └── locales/           # ملفات الترجمة
+│       ├── ar.json        # الترجمة العربية
+│       └── en.json        # الترجمة الإنجليزية
+├── types/                 # أنواع TypeScript
+│   └── translations.ts    # أنواع الترجمات
+└── middleware.ts          # Middleware للتوجيه حسب اللغة
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 البدء
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### المتطلبات
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+ 
+- npm أو yarn أو pnpm
 
-## Learn More
+### التثبيت والتشغيل
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# تثبيت المكتبات
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# تشغيل السيرفر المحلي
+npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# بناء المشروع للإنتاج
+npm run build
 
-## Deploy on Vercel
+# تشغيل نسخة الإنتاج
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+افتح المتصفح على [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌍 المسارات
+
+- `/` - يوجّه تلقائياً إلى `/ar` (اللغة الافتراضية)
+- `/ar` - الموقع باللغة العربية (RTL)
+- `/en` - الموقع باللغة الإنجليزية (LTR)
+
+## 📦 الأقسام
+
+### 1. Header (شريط التنقل)
+- شعار الموقع
+- روابط التنقل
+- زر تبديل اللغة
+
+### 2. Hero Section (قسم البطل)
+- عنوان رئيسي
+- وصف مختصر
+- أزرار Call-to-Action
+
+### 3. Latest News (آخر الأخبار)
+- عرض آخر 3 أخبار
+- تصميم بطاقات جذاب
+
+### 4. About Us (من نحن)
+- معلومات عن الشركة
+- المهمة والرؤية والقيم
+
+### 5. FAQ (الأسئلة الشائعة)
+- أسئلة قابلة للطي/الفتح
+- تفاعلي وسهل الاستخدام
+
+### 6. Contact Us (تواصل معنا)
+- نموذج اتصال
+- معلومات التواصل
+- ساعات العمل
+
+### 7. Footer (التذييل)
+- روابط سريعة
+- وسائل التواصل الاجتماعي
+- معلومات حقوق الطبع
+
+## 🎨 التخصيص
+
+### إضافة لغة جديدة
+
+1. أضف ملف الترجمة في `src/i18n/locales/`
+2. حدّث `src/i18n/config.ts` لإضافة اللغة الجديدة
+
+### تعديل المحتوى
+
+عدّل ملفات الترجمة في:
+- `src/i18n/locales/ar.json` للعربية
+- `src/i18n/locales/en.json` للإنجليزية
+
+### تعديل التصميم
+
+جميع الأنماط موجودة في:
+- `src/app/globals.css` للأنماط العامة
+- استخدام Tailwind CSS للأنماط المباشرة في المكونات
+
+## 🛠️ التقنيات المستخدمة
+
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Bundler**: [Turbopack](https://turbo.build/pack)
+
+## 📝 ملاحظات
+
+- المشروع يستخدم Next.js App Router
+- Server Components مستخدمة افتراضياً
+- Client Components مستخدمة فقط عند الحاجة للتفاعل
+
+---
+
+صُنع بـ ❤️ باستخدام Next.js
