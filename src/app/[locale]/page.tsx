@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Locale } from '@/i18n/config';
 import { getTranslations } from '@/i18n/utils';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -16,19 +15,20 @@ export const metadata: Metadata = {
 export default async function LocalePage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const translations = getTranslations(locale);
+  const translations = getTranslations(locale as 'ar' | 'en');
+  const validLocale = locale as 'ar' | 'en';
 
   return (
     <>
-      <Header translations={translations} locale={locale} />
-      <Hero translations={translations} locale={locale} />
-      <LatestNews translations={translations} locale={locale} />
-      <FAQ translations={translations} locale={locale} />
-      <ContactUs locale={locale} />
-      <Footer locale={locale} />
+      <Header translations={translations} locale={validLocale} />
+      <Hero translations={translations} locale={validLocale} />
+      <LatestNews translations={translations} locale={validLocale} />
+      <FAQ translations={translations} locale={validLocale} />
+      <ContactUs locale={validLocale} />
+      <Footer locale={validLocale} />
     </>
   );
 }

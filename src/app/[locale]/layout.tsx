@@ -1,4 +1,3 @@
-import { Locale } from '@/i18n/config';
 import { Noto_Kufi_Arabic } from 'next/font/google';
 import '../globals.css';
 
@@ -14,7 +13,7 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   const isRTL = locale === 'ar';
