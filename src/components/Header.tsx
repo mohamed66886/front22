@@ -33,6 +33,7 @@ export default function Header({ translations, locale }: HeaderProps) {
       setIsScrolled(window.scrollY > 50);
     };
 
+    handleScroll(); // Check initial scroll position
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -51,12 +52,14 @@ export default function Header({ translations, locale }: HeaderProps) {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header 
+      suppressHydrationWarning
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-white/95 backdrop-blur-lg border-b border-zinc-300/50 dark:bg-zinc-900/95 dark:border-zinc-700/50 shadow-sm' 
         : 'bg-transparent border-b border-white/10'
     }`}>
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6" suppressHydrationWarning>
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo Section */}
           <Link 
@@ -73,12 +76,16 @@ export default function Header({ translations, locale }: HeaderProps) {
               />
             </div>
             <div className="flex flex-col">
-              <span className={`text-lg md:text-xl font-bold leading-tight transition-colors ${
+              <span 
+                suppressHydrationWarning
+                className={`text-lg md:text-xl font-bold leading-tight transition-colors ${
                 isScrolled ? 'text-zinc-900 dark:text-white' : 'text-white drop-shadow-lg'
               }`}>
                 {isRTL ? 'وحدة ضمان الجودة' : 'ISFQAU Team'}
               </span>
-              <span className={`text-xs md:text-sm leading-tight transition-colors ${
+              <span 
+                suppressHydrationWarning
+                className={`text-xs md:text-sm leading-tight transition-colors ${
                 isScrolled ? 'text-zinc-600 dark:text-zinc-400' : 'text-white/90 drop-shadow-md'
               }`}>
                 {isRTL ? 'في خدمة الجامعات المصرية' : 'Serving Egyptian Universities'}
@@ -87,13 +94,14 @@ export default function Header({ translations, locale }: HeaderProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1" suppressHydrationWarning>
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.key}
                   href={item.href}
+                  suppressHydrationWarning
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 group ${
                     isScrolled
                       ? 'text-zinc-700 hover:text-primary-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'
@@ -130,6 +138,7 @@ export default function Header({ translations, locale }: HeaderProps) {
             {/* Language Toggle - Desktop */}
             <button
               onClick={toggleLocale}
+              suppressHydrationWarning
               className={`hidden md:flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold transition-all duration-300 ${
                 isScrolled
                   ? 'text-zinc-700 hover:text-primary-600 dark:text-zinc-300 dark:hover:text-white'
@@ -145,6 +154,7 @@ export default function Header({ translations, locale }: HeaderProps) {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              suppressHydrationWarning
               className={`md:hidden p-2 rounded-lg transition-colors ${
                 isScrolled
                   ? 'bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700'
@@ -152,9 +162,9 @@ export default function Header({ translations, locale }: HeaderProps) {
               }`}
             >
               {isMenuOpen ? (
-                <X className={`w-6 h-6 ${isScrolled ? 'text-zinc-700 dark:text-zinc-300' : 'text-white'}`} />
+                <X className={`w-6 h-6 ${isScrolled ? 'text-zinc-700 dark:text-zinc-300' : 'text-white'}`} suppressHydrationWarning />
               ) : (
-                <Menu className={`w-6 h-6 ${isScrolled ? 'text-zinc-700 dark:text-zinc-300' : 'text-white'}`} />
+                <Menu className={`w-6 h-6 ${isScrolled ? 'text-zinc-700 dark:text-zinc-300' : 'text-white'}`} suppressHydrationWarning />
               )}
             </button>
           </div>
@@ -204,6 +214,7 @@ export default function Header({ translations, locale }: HeaderProps) {
             {/* Language Toggle - Mobile */}
             <button
               onClick={toggleLocale}
+              suppressHydrationWarning
               className={`flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg font-bold transition-all duration-300 ${
                 isScrolled
                   ? 'text-zinc-700 hover:text-primary-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'

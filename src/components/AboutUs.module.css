@@ -1,0 +1,63 @@
+/* Custom styles for AboutUs component */
+
+.videoContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(147, 197, 253, 0.2);
+  pointer-events: none;
+}
+
+.serviceCard {
+  transition: all 0.3s ease-in-out;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.circleIcon {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.circleIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+
+.circleIcon:active {
+  transform: scale(1.05);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .serviceCard {
+    backdrop-filter: blur(8px);
+  }
+  
+  .circleIcon {
+    will-change: transform;
+  }
+}
+
+/* Ensure proper text rendering on mobile */
+@media (max-width: 768px) {
+  .mobileText {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* RTL support */
+[dir="rtl"] .cardContainer {
+  text-align: right;
+}
+
+[dir="ltr"] .cardContainer {
+  text-align: left;
+}

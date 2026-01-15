@@ -64,59 +64,22 @@
   },
   "about": {
     "title": "About Us",
-    "subtitle": "Get to know us better",
-    "description": "We are a leading technology company, working to provide innovative solutions that help businesses grow and evolve. Our professional team includes experts in various technical fields.",
-    "mission": {
-      "title": "Our Mission",
-      "description": "To provide innovative technical solutions that help our clients achieve their goals"
+    "subtitle": "Quality Assurance Unit in Egyptian Universities",
+    "description": "We are a specialized unit in academic and administrative quality assurance in Egyptian universities. We strive to achieve educational excellence and develop the academic system according to international and local quality standards.",
+    "overview": {
+      "title": "About the Unit",
+      "academicExcellence": "Academic Excellence",
+      "academicExcellenceDesc": "We work to raise the quality of education",
+      "globalStandards": "Global Standards",
+      "globalStandardsDesc": "We follow the highest international standards"
     },
-    "vision": {
-      "title": "Our Vision",
-      "description": "To be the first choice for companies seeking technical excellence"
-    },
-    "values": {
-      "title": "Our Values",
-      "description": "Innovation, quality, and commitment to providing the best customer experience"
-    },
-    "goals": {
-      "title": "System Goals",
-      "items": [
-        "Support quality assurance units in managing and organizing all quality activities electronically",
-        "Promote the culture of quality and accreditation among faculty members, students, and staff",
-        "Organize and distribute quality tasks and monitor their accurate implementation",
-        "Create and manage quality files and assess them easily",
-        "Conduct electronic surveys and analyze their results statistically",
-        "Receive complaints and suggestions and prepare reports on them",
-        "Prepare comprehensive periodic reports supporting accreditation requirements",
-        "Improve communication between all parties in the educational system",
-        "Support decision makers through accurate reports and analysis"
-      ]
-    },
-    "targetAudience": {
-      "title": "Target Audience",
-      "subtitle": "The system serves all parties involved in the quality system within Egyptian universities",
-      "groups": [
-        "Quality assurance units in faculties",
-        "Faculty members",
-        "Teaching assistants",
-        "Administrative staff",
-        "Students",
-        "Quality unit reviewers"
-      ]
-    },
-    "whyThisSystem": {
-      "title": "Why This System?",
-      "reasons": [
-        "Complies with quality and accreditation standards adopted in Egyptian universities",
-        "Provides a unified and secure digital work environment",
-        "Reduces effort and time spent on paperwork",
-        "Enables monitoring and evaluation anytime, anywhere",
-        "Scalable and applicable to multiple faculties or universities"
-      ]
-    },
-    "team": {
-      "title": "About the Team",
-      "description": "This system was designed and developed by a specialized team of students from the Faculty of Computers and Information, as part of an applied academic project aimed at linking theoretical study with practical application, and providing a realistic technical solution that serves the educational community. The team relied on the latest concepts of software engineering, systems analysis, and database design, with commitment to professional standards in building information systems, so that the system comes out in a professional form that is capable of development and actual application within educational institutions."
+    "services": {
+      "title": "Quality Assurance Unit Services",
+      "subtitle": "You can access all electronic services through the website",
+      "subtitleLine2": "Where you can choose the portal you want to access",
+      "students": "Students",
+      "staff": "Faculty and Staff",
+      "graduates": "Graduates and Postgraduate Studies"
     }
   },
   "faq": {

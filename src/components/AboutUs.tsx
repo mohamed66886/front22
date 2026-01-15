@@ -1,131 +1,293 @@
-'use client';
+"use client";
 
-import { Locale } from '@/i18n/config';
-import { Translations } from '@/types/translations';
-import Image from 'next/image';
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import {
+  Target,
+  Globe,
+  GraduationCap,
+  Users,
+  BookOpen,
+} from "lucide-react";
+import { getTranslations } from "@/i18n/utils";
+import type { Locale } from "@/i18n/config";
 
 interface AboutUsProps {
-  translations?: Translations;
   locale: Locale;
 }
 
 export default function AboutUs({ locale }: AboutUsProps) {
-  const isArabic = locale === 'ar';
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+  const [isImageVisible, setIsImageVisible] = useState(false);
+  const [isContentVisible, setIsContentVisible] = useState(false);
+  const [isCardsVisible, setIsCardsVisible] = useState(false);
+  const [isVisionSectionVisible, setIsVisionSectionVisible] = useState(false);
+  
+  const titleRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const visionRef = useRef<HTMLDivElement>(null);
+  
+  const isRTL = locale === 'ar';
 
+  useEffect(() => {
+    const observerOptions = { threshold: 0.1 };
+
+    const titleObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsTitleVisible(entry.isIntersecting);
+      },
+      observerOptions
+    );
+
+    const imageObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsImageVisible(entry.isIntersecting);
+      },
+      observerOptions
+    );
+
+    const contentObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsContentVisible(entry.isIntersecting);
+      },
+      observerOptions
+    );
+
+    const cardsObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsCardsVisible(entry.isIntersecting);
+      },
+      observerOptions
+    );
+
+    const visionObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisionSectionVisible(entry.isIntersecting);
+      },
+      observerOptions
+    );
+
+    const titleElement = titleRef.current;
+    const imageElement = imageRef.current;
+    const contentElement = contentRef.current;
+    const cardsElement = cardsRef.current;
+    const visionElement = visionRef.current;
+
+    if (titleElement) titleObserver.observe(titleElement);
+    if (imageElement) imageObserver.observe(imageElement);
+    if (contentElement) contentObserver.observe(contentElement);
+    if (cardsElement) cardsObserver.observe(cardsElement);
+    if (visionElement) visionObserver.observe(visionElement);
+
+    return () => {
+      if (titleElement) titleObserver.unobserve(titleElement);
+      if (imageElement) imageObserver.unobserve(imageElement);
+      if (contentElement) contentObserver.unobserve(contentElement);
+      if (cardsElement) cardsObserver.unobserve(cardsElement);
+      if (visionElement) visionObserver.unobserve(visionElement);
+    };
+  }, []);
+
+  const t = (key: string): string => {
+    const translations = getTranslations(locale);
+    const keys = key.split('.');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let value: any = translations;
+    for (const k of keys) {
+      value = value?.[k];
+    }
+    return value || key;
+  };
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-linear-to-b from-white via-blue-50/30 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-            {isArabic ? 'من نحن' : 'About Us'}
+    <div className="bg-gray-50"  dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      {/* About Description Section */}
+      <section className="py-12 overflow-hidden md:py-16 bg-white">
+                <div 
+          ref={titleRef as React.RefObject<HTMLDivElement>}
+          className={`flex flex-col items-center justify-center mb-16 transition-all duration-1000 ${
+            isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+          }`}
+        >
+          {/* Title */}
+          <h2 className="relative text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight transform hover:scale-105 transition-transform duration-300">
+            <span className="transition-colors duration-300 text-zinc-900 dark:text-white">
+              {isRTL ? 'من ' : 'About '}
+            </span>
+            <span className="text-sky-500 inline-block hover:animate-pulse">{isRTL ? 'نحن' : 'Us'}</span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-linear-to-r from-blue-600 to-indigo-600 mx-auto rounded-full" />
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            {isArabic 
-              ? 'نسعى لتمثيل طلاب الجامعات المصرية وتقديم الدعم والخدمات اللازمة'
-              : 'We strive to represent Egyptian university students and provide the necessary support and services'
-            }
-          </p>
-        </div>
 
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Image Side */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative h-64 sm:h-96 lg:h-125 rounded-2xl overflow-hidden shadow-2xl">
+          {/* Curve */}
+          <svg
+            className="mt-4 w-full max-w-70 sm:max-w-87.5 md:max-w-105"
+            height="40"
+            viewBox="0 0 420 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <path
+              d="M10 30 C 140 5, 280 5, 410 30"
+              stroke="#5BB6E8"
+              strokeWidth="5"
+              strokeLinecap="round"
+              className={`transition-all duration-1000 delay-300 ${
+                isTitleVisible ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                strokeDasharray: isTitleVisible ? '0' : '1000',
+                strokeDashoffset: isTitleVisible ? '0' : '1000',
+              }}
+            />
+          </svg>
+        </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+            {/* Image */}
+            <div 
+              ref={imageRef}
+              className={`relative h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg order-2 lg:order-1 transition-all duration-1000 transform ${
+                isImageVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${isRTL ? 'translate-x-20' : '-translate-x-20'}`
+              }`}
+            >
               <Image
-                src="/Coat_of_arms_of_Egypt_(Official).svg"
-                alt={isArabic ? 'شعار مصر' : 'Egypt Coat of Arms'}
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=500&fit=crop"
+                alt={t("about.overview.title")}
                 fill
-                className="object-contain p-8 sm:p-12 bg-white dark:bg-gray-800"
+                className="object-cover"
               />
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -left-4 w-20 h-20 sm:w-24 sm:h-24 bg-blue-500/10 rounded-full blur-xl" />
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 sm:w-40 sm:h-40 bg-indigo-500/10 rounded-full blur-2xl" />
             </div>
-          </div>
 
-          {/* Content Side */}
-          <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
-            {/* Mission Card */}
-            <div className="bg-white dark:bg-gray-800 p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">
-                    {isArabic ? 'رسالتنا' : 'Our Mission'}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {isArabic 
-                      ? 'نلتزم بنشر ثقافة الجودة وتطبيق معايير الاعتماد الأكاديمي، وتطوير العملية التعليمية والبحثية وخدمة المجتمع من خلال التقييم المستمر للأداء وتحسين جودة المخرجات التعليمية.'
-                      : 'We are committed to spreading the culture of quality and applying academic accreditation standards, developing the educational and research process, and community service through continuous performance evaluation and improving the quality of educational outcomes.'
-                    }
+            {/* Content */}
+            <div 
+              ref={contentRef}
+              className={`order-1 lg:order-2 transition-all duration-1000 delay-300 transform ${
+                isContentVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${isRTL ? '-translate-x-20' : 'translate-x-20'}`
+              }`}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
+                {t("about.overview.title")}
+              </h2>
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 md:mb-8">
+                {t("about.description")}
+              </p>
+              <div 
+                ref={cardsRef}
+                className={`grid grid-cols-2 gap-3 md:gap-4 transition-all duration-1000 delay-500 ${
+                  isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
+                <div className="bg-blue-50 p-3 md:p-5 rounded-lg border border-blue-100 hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col md:flex-row items-center md:gap-3 mb-2 md:mb-3">
+                    <div className="rounded-lg shrink-0 mb-2 md:mb-0">
+                      <Target className="w-8 h-8 md:w-5 md:h-5 text-blue-600" />
+                    </div>
+                    <h4 className="text-gray-900 font-semibold text-xs md:text-base text-center md:text-right">
+                      {t("about.overview.academicExcellence")}
+                    </h4>
+                  </div>
+                  <p className="text-gray-600 text-xs md:text-sm text-center md:text-right">
+                    {t("about.overview.academicExcellenceDesc")}
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Vision Card */}
-            <div className="bg-white dark:bg-gray-800 p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">
-                    {isArabic ? 'رؤيتنا' : 'Our Vision'}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {isArabic 
-                      ? 'نسعى لتحقيق التميز والريادة في التعليم العالي من خلال تطبيق معايير الجودة الشاملة والاعتماد الأكاديمي، وتحسين مستوى الأداء المؤسسي والأكاديمي وفقاً للمعايير المحلية والعالمية.'
-                      : 'We seek to achieve excellence and leadership in higher education through the application of comprehensive quality standards and academic accreditation, and to improve the level of institutional and academic performance in accordance with local and global standards.'
-                    }
+                <div className="bg-blue-50 p-3 md:p-5 rounded-lg border border-blue-100 hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col md:flex-row items-center md:gap-3 mb-2 md:mb-3">
+                    <div className="rounded-lg shrink-0 mb-2 md:mb-0">
+                      <Globe className="w-8 h-8 md:w-5 md:h-5 text-blue-600" />
+                    </div>
+                    <h4 className="text-gray-900 font-semibold text-xs md:text-base text-center md:text-right">
+                      {t("about.overview.globalStandards")}
+                    </h4>
+                  </div>
+                  <p className="text-gray-600 text-xs md:text-sm text-center md:text-right">
+                    {t("about.overview.globalStandardsDesc")}
                   </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Goals Card */}
-            <div className="bg-white dark:bg-gray-800 p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-                    {isArabic ? 'أهدافنا' : 'Our Goals'}
-                  </h3>
-                  <ul className="space-y-2 sm:space-y-3">
-                    {[
-                      { ar: 'نشر ثقافة الجودة بين جميع أعضاء هيئة التدريس والطلاب', en: 'Spreading the culture of quality among all staff and students' },
-                      { ar: 'تطبيق معايير الاعتماد الأكاديمي المحلية والعالمية', en: 'Applying local and global academic accreditation standards' },
-                      { ar: 'تطوير البرامج الأكاديمية بما يتماشى مع متطلبات سوق العمل', en: 'Developing academic programs in line with labor market requirements' },
-                      { ar: 'تحسين مستوى الأداء المؤسسي والأكاديمي', en: 'Improving the level of institutional and academic performance' },
-                    ].map((goal, index) => (
-                      <li key={index} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 shrink-0 mt-0.5 sm:mt-1" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>{isArabic ? goal.ar : goal.en}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Vision, Mission, Goals Section */}
+      <section 
+        ref={visionRef}
+        className={`relative py-12 md:py-16 overflow-hidden flex items-center min-h-112.5 md:min-h-125 transition-all duration-1000 ${
+          isVisionSectionVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover"
+        >
+          <source src="/computer.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Blue overlay filter */}
+        <div className="absolute inset-0 bg-blue-300 opacity-20"></div>
+        
+        <div className={`relative z-10 w-full flex items-center px-4 sm:px-6 lg:px-8 ${locale === 'ar' ? 'justify-start' : 'justify-end'}`}>
+          {/* Main Card */}
+          <div className={`w-full md:w-2/5 lg:w-1/3 bg-white/95 backdrop-blur-sm shadow-2xl rounded-lg transition-all duration-1000 delay-300 transform ${
+            isVisionSectionVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+          } ${locale === 'ar' ? 'md:mr-8 lg:mr-20' : 'md:ml-8 lg:ml-20'}`}
+          >
+            <div className="p-5 md:p-8 w-full">
+              {/* Title */}
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 text-center mb-2 md:mb-3">
+                {t("about.services.title")}
+              </h2>
+              
+              {/* Subtitle */}
+              <div className="text-center mb-6 md:mb-10">
+                <p className="text-gray-600 text-xs sm:text-sm md:text-base pb-2 border-b-2 border-red-500 inline-block font-normal px-2">
+                  {t("about.services.subtitle")}
+                  <br className="hidden sm:block" />
+                  <span className="hidden sm:inline">{t("about.services.subtitleLine2")}</span>
+                </p>
+              </div>
+
+              {/* Three Circles - Horizontal Layout */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                {/* Student Circle */}
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700" />
+                  </div>
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 text-center leading-tight">
+                    {t("about.services.students")}
+                  </h3>
+                </div>
+
+                {/* Staff Circle */}
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <Users className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700" />
+                  </div>
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 text-center leading-tight">
+                    {t("about.services.staff")}
+                  </h3>
+                </div>
+
+                {/* Graduate Circle */}
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700" />
+                  </div>
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 text-center leading-tight">
+                    {t("about.services.graduates")}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

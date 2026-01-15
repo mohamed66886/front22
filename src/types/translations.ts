@@ -32,34 +32,20 @@ export interface Translations {
     title: string;
     subtitle: string;
     description: string;
-    mission: {
+    overview: {
       title: string;
-      description: string;
+      academicExcellence: string;
+      academicExcellenceDesc: string;
+      globalStandards: string;
+      globalStandardsDesc: string;
     };
-    vision: {
-      title: string;
-      description: string;
-    };
-    values: {
-      title: string;
-      description: string;
-    };
-    goals: {
-      title: string;
-      items: string[];
-    };
-    targetAudience: {
+    services: {
       title: string;
       subtitle: string;
-      groups: string[];
-    };
-    whyThisSystem: {
-      title: string;
-      reasons: string[];
-    };
-    team: {
-      title: string;
-      description: string;
+      subtitleLine2: string;
+      students: string;
+      staff: string;
+      graduates: string;
     };
   };
   faq: {
