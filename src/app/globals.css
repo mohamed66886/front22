@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 :root {
   --background: #ffffff;
@@ -68,4 +69,100 @@ html {
 
 .animation-delay-4000 {
   animation-delay: 4s;
+}
+
+/* Float animation for hero image */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Leaflet Map Customization */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.leaflet-popup-content {
+  margin: 8px 12px;
+  font-size: 14px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .leaflet-popup-content-wrapper {
+    border-radius: 6px;
+  }
+  
+  .leaflet-popup-content {
+    margin: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .leaflet-control-zoom {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+  }
+  
+  .leaflet-control-zoom a {
+    width: 28px !important;
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 16px !important;
+  }
+  
+  .leaflet-bar {
+    border-radius: 6px !important;
+  }
+}
+
+.custom-marker {
+  background: transparent;
+  border: none;
+}
+
+.custom-marker svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.2s ease;
+}
+
+.custom-marker:hover svg {
+  transform: scale(1.1);
+}
+
+/* Custom popup styling */
+.custom-popup .leaflet-popup-content-wrapper {
+  background: white;
+  padding: 2px;
+}
+
+.custom-popup .leaflet-popup-tip {
+  background: white;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 640px) {
+  .leaflet-marker-icon {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  
+  .leaflet-popup-close-button {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 18px !important;
+    padding: 2px !important;
+  }
 }

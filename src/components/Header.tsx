@@ -112,7 +112,7 @@ export default function Header({ translations, locale }: HeaderProps) {
             {/* Login Button - Desktop */}
             <Link
               href={`/${locale}/login`}
-              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               <LogIn className="w-4 h-4 group-hover:scale-110 transition-transform" />
               <span>{translations.header.login}</span>
@@ -121,7 +121,7 @@ export default function Header({ translations, locale }: HeaderProps) {
             {/* Register Button - Desktop */}
             <Link
               href={`/${locale}/register`}
-              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               <UserPlus className="w-4 h-4 group-hover:scale-110 transition-transform" />
               <span>{translations.header.register}</span>
@@ -185,7 +185,7 @@ export default function Header({ translations, locale }: HeaderProps) {
             <div className="space-y-2 mb-6">
               <Link
                 href={`/${locale}/login`}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 shadow-lg hover:shadow-xl"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 bg-linear-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 shadow-lg hover:shadow-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <LogIn className="w-5 h-5" />
@@ -193,7 +193,7 @@ export default function Header({ translations, locale }: HeaderProps) {
               </Link>
               <Link
                 href={`/${locale}/register`}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 bg-gradient-to-r from-green-600 to-green-500 text-white hover:from-green-700 hover:to-green-600 shadow-lg hover:shadow-xl"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 bg-linear-to-r from-green-600 to-green-500 text-white hover:from-green-700 hover:to-green-600 shadow-lg hover:shadow-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <UserPlus className="w-5 h-5" />
