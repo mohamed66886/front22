@@ -97,7 +97,11 @@ interface SidebarProps {
   onCollapsedChange?: (collapsed: boolean) => void;
 }
 
-export default function Sidebar({ isOpen = true, onClose, onCollapsedChange }: SidebarProps) {
+export default function Sidebar({ 
+  isOpen = false, // تغيير من true إلى false
+  onClose, 
+  onCollapsedChange 
+}: SidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
