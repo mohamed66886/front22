@@ -6,16 +6,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { 
-  Home, 
-  Newspaper, 
-  Info, 
-  HelpCircle, 
-  Phone, 
   LogIn, 
   UserPlus,
   Menu,
-  X,
-  Globe
+  X
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -37,19 +31,6 @@ export default function Header({ translations, locale }: HeaderProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navItems = [
-    { key: 'home' as const, href: `/${locale}`, icon: Home },
-    { key: 'news' as const, href: `/${locale}#news`, icon: Newspaper },
-    { key: 'about' as const, href: `/${locale}#about`, icon: Info },
-    { key: 'faq' as const, href: `/${locale}#faq`, icon: HelpCircle },
-    { key: 'contact' as const, href: `/${locale}#contact`, icon: Phone },
-  ];
-
-  const toggleLocale = () => {
-    const newLocale = locale === 'ar' ? 'en' : 'ar';
-    window.location.href = `/${newLocale}`;
-  };
 
   return (
     <header 
@@ -93,34 +74,16 @@ export default function Header({ translations, locale }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1" suppressHydrationWarning>
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  suppressHydrationWarning
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 group ${
-                    isScrolled
-                      ? 'text-zinc-700 hover:text-primary-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'
-                      : 'text-white hover:text-white hover:bg-white/10 backdrop-blur-sm drop-shadow-lg'
-                  }`}
-                >
-                  <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  {translations.header[item.key]}
-                </Link>
-              );
-            })}
-          </nav>
-
           {/* Actions Section */}
           <div className="flex items-center gap-2 md:gap-4">
             {/* Login Button - Desktop */}
             <Link
               href={`/${locale}/login`}
-              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group hover:bg-white/10 ${
+                isScrolled
+                  ? 'text-zinc-700 hover:text-primary-600 dark:text-zinc-300 dark:hover:text-white'
+                  : 'text-white hover:text-white/80'
+              }`}
             >
               <LogIn className="w-4 h-4 group-hover:scale-110 transition-transform" />
               <span>{translations.header.login}</span>
@@ -129,27 +92,15 @@ export default function Header({ translations, locale }: HeaderProps) {
             {/* Register Button - Desktop */}
             <Link
               href={`/${locale}/register`}
-              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
-            >
-              <UserPlus className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              <span>{translations.header.register}</span>
-            </Link>
-
-            {/* Language Toggle - Desktop */}
-            <button
-              onClick={toggleLocale}
-              suppressHydrationWarning
-              className={`hidden md:flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold transition-all duration-300 ${
+              className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 group ${
                 isScrolled
                   ? 'text-zinc-700 hover:text-primary-600 dark:text-zinc-300 dark:hover:text-white'
                   : 'text-white hover:text-white/80'
               }`}
             >
-              <Globe className="w-5 h-5" />
-              <span className="font-bold text-base">
-                {locale === 'ar' ? 'EN' : 'AR'}
-              </span>
-            </button>
+              <UserPlus className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <span>{translations.header.register}</span>
+            </Link>
 
             {/* Mobile Menu Toggle */}
             <button
@@ -172,30 +123,16 @@ export default function Header({ translations, locale }: HeaderProps) {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden pt-4 pb-6 border-t border-zinc-200 dark:border-zinc-800 animate-fadeIn">
-            {/* Navigation Links */}
-            <div className="space-y-2 mb-6">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg text-zinc-700 hover:text-primary-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <Icon className="w-5 h-5" />
-                    <span className="font-medium">{translations.header[item.key]}</span>
-                  </Link>
-                );
-              })}
-            </div>
-
+          <div className="md:hidden pt-4 pb-6 border-t border-zinc-200 dark:border-zinc-800 animate-fade-in">
             {/* User Actions */}
             <div className="space-y-2 mb-6">
               <Link
                 href={`/${locale}/login`}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 bg-linear-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 shadow-lg hover:shadow-xl"
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 ${
+                  isScrolled
+                    ? 'text-zinc-700 hover:text-primary-600 dark:text-zinc-300 dark:hover:text-white'
+                    : 'text-white hover:text-white/80'
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <LogIn className="w-5 h-5" />
@@ -203,48 +140,20 @@ export default function Header({ translations, locale }: HeaderProps) {
               </Link>
               <Link
                 href={`/${locale}/register`}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 bg-linear-to-r from-green-600 to-green-500 text-white hover:from-green-700 hover:to-green-600 shadow-lg hover:shadow-xl"
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 ${
+                  isScrolled
+                    ? 'text-zinc-700 hover:text-primary-600 dark:text-zinc-300 dark:hover:text-white'
+                    : 'text-white hover:text-white/80'
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <UserPlus className="w-5 h-5" />
                 {translations.header.register}
               </Link>
             </div>
-
-            {/* Language Toggle - Mobile */}
-            <button
-              onClick={toggleLocale}
-              suppressHydrationWarning
-              className={`flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg font-bold transition-all duration-300 ${
-                isScrolled
-                  ? 'text-zinc-700 hover:text-primary-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'
-                  : 'text-zinc-700 hover:text-primary-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800'
-              }`}
-            >
-              <Globe className="w-5 h-5" />
-              <span className="font-bold text-base">
-                {locale === 'ar' ? 'EN' : 'AR'}
-              </span>
-            </button>
           </div>
         )}
       </div>
-
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
     </header>
   );
 }

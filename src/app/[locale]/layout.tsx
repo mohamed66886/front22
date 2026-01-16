@@ -1,5 +1,7 @@
 import { Noto_Kufi_Arabic } from 'next/font/google';
 import '../globals.css';
+import { ThemeProvider } from '@/contexts/ThemeContext';
+import ControlButtons from '@/components/ControlButtons';
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ['arabic'],
@@ -19,9 +21,12 @@ export default async function LocaleLayout({
   const isRTL = locale === 'ar';
 
   return (
-    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} className={locale === 'ar' ? notoKufiArabic.variable : ''}>
+    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <body className={`antialiased ${locale === 'ar' ? 'font-arabic' : ''}`}>
-        {children}
+        <ThemeProvider>
+          <ControlButtons />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

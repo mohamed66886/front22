@@ -75,7 +75,7 @@ const QualityUnit = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-secondary/30" ref={ref}>
+    <section className="py-16 md:py-20 bg-secondary/30 dark:bg-zinc-900" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <motion.div
@@ -84,8 +84,8 @@ const QualityUnit = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <h2 className="section-title text-primary">Quality Assurance Unit</h2>
-          <div className="w-16 h-1 bg-primary mx-auto mt-3 rounded-full" />
+          <h2 className="section-title text-primary dark:text-blue-400">Quality Assurance Unit</h2>
+          <div className="w-16 h-1 bg-primary dark:bg-blue-400 mx-auto mt-3 rounded-full" />
         </motion.div>
 
         {/* Cards Grid */}
@@ -100,7 +100,7 @@ const QualityUnit = () => {
             return (
               <motion.article
                 key={card.id}
-                className="card-academic p-6 relative overflow-hidden group"
+                className="card-academic p-6 relative overflow-hidden group bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
                 variants={cardVariants}
                 whileHover={{ 
                   scale: 1.03,
@@ -110,7 +110,7 @@ const QualityUnit = () => {
                 transition={{ duration: 0.3 }}
               >
                 {/* Animated background overlay */}
-                <div className="absolute inset-0 bg-primary origin-bottom-right z-0 scale-0 group-hover:scale-100 transition-transform duration-400 ease-out" />
+                <div className="absolute inset-0 bg-primary dark:bg-blue-600 origin-bottom-right z-0 scale-0 group-hover:scale-100 transition-transform duration-400 ease-out" />
                 
                 {/* Decorative background icon */}
                 <motion.div
@@ -128,16 +128,16 @@ const QualityUnit = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div
-                      className="w-1 h-8 bg-primary rounded-full group-hover:bg-white"
+                      className="w-1 h-8 bg-primary dark:bg-blue-400 rounded-full group-hover:bg-white"
                       whileHover={{ scaleY: 1.2 }}
                       transition={{ duration: 0.2 }}
                     />
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-white">{card.title}</h3>
+                    <h3 className="text-xl font-bold text-foreground dark:text-white group-hover:text-white">{card.title}</h3>
                   </motion.div>
 
                   {card.content && (
                     <motion.p
-                      className="text-muted-foreground text-sm leading-relaxed group-hover:text-white/90"
+                      className="text-muted-foreground dark:text-zinc-300 text-sm leading-relaxed group-hover:text-white/90"
                       initial={{ opacity: 0.9 }}
                       whileHover={{ opacity: 1 }}
                     >

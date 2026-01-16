@@ -101,9 +101,9 @@ export default function AboutUs({ locale }: AboutUsProps) {
     return value || key;
   };
   return (
-    <div className="bg-gray-50"  dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="bg-gray-50 dark:bg-zinc-950"  dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {/* About Description Section */}
-      <section className="py-12 overflow-hidden md:py-16 bg-white">
+      <section className="py-12 overflow-hidden md:py-16 bg-white dark:bg-zinc-900">
                 <div 
           ref={titleRef as React.RefObject<HTMLDivElement>}
           className={`flex flex-col items-center justify-center mb-16 transition-all duration-1000 ${
@@ -166,10 +166,10 @@ export default function AboutUs({ locale }: AboutUsProps) {
                 isContentVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${isRTL ? '-translate-x-20' : 'translate-x-20'}`
               }`}
             >
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">
                 {t("about.overview.title")}
               </h2>
-              <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 md:mb-8">
+              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6 md:mb-8">
                 {t("about.description")}
               </p>
               <div 
@@ -178,29 +178,29 @@ export default function AboutUs({ locale }: AboutUsProps) {
                   isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
               >
-                <div className="bg-blue-50 p-3 md:p-5 rounded-lg border border-blue-100 hover:shadow-md transition-shadow duration-300">
+                <div className="bg-blue-50 dark:bg-zinc-800 p-3 md:p-5 rounded-lg border border-blue-100 dark:border-zinc-700 hover:shadow-md transition-shadow duration-300">
                   <div className="flex flex-col md:flex-row items-center md:gap-3 mb-2 md:mb-3">
                     <div className="rounded-lg shrink-0 mb-2 md:mb-0">
-                      <Target className="w-8 h-8 md:w-5 md:h-5 text-blue-600" />
+                      <Target className="w-8 h-8 md:w-5 md:h-5 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h4 className="text-gray-900 font-semibold text-xs md:text-base text-center md:text-right">
+                    <h4 className="text-gray-900 dark:text-white font-semibold text-xs md:text-base text-center md:text-right">
                       {t("about.overview.academicExcellence")}
                     </h4>
                   </div>
-                  <p className="text-gray-600 text-xs md:text-sm text-center md:text-right">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm text-center md:text-right">
                     {t("about.overview.academicExcellenceDesc")}
                   </p>
                 </div>
-                <div className="bg-blue-50 p-3 md:p-5 rounded-lg border border-blue-100 hover:shadow-md transition-shadow duration-300">
+                <div className="bg-blue-50 dark:bg-zinc-800 p-3 md:p-5 rounded-lg border border-blue-100 dark:border-zinc-700 hover:shadow-md transition-shadow duration-300">
                   <div className="flex flex-col md:flex-row items-center md:gap-3 mb-2 md:mb-3">
                     <div className="rounded-lg shrink-0 mb-2 md:mb-0">
-                      <Globe className="w-8 h-8 md:w-5 md:h-5 text-blue-600" />
+                      <Globe className="w-8 h-8 md:w-5 md:h-5 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h4 className="text-gray-900 font-semibold text-xs md:text-base text-center md:text-right">
+                    <h4 className="text-gray-900 dark:text-white font-semibold text-xs md:text-base text-center md:text-right">
                       {t("about.overview.globalStandards")}
                     </h4>
                   </div>
-                  <p className="text-gray-600 text-xs md:text-sm text-center md:text-right">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm text-center md:text-right">
                     {t("about.overview.globalStandardsDesc")}
                   </p>
                 </div>
@@ -233,19 +233,19 @@ export default function AboutUs({ locale }: AboutUsProps) {
         
         <div className={`relative z-10 w-full flex items-center px-4 sm:px-6 lg:px-8 ${locale === 'ar' ? 'justify-start' : 'justify-end'}`}>
           {/* Main Card */}
-          <div className={`w-full md:w-2/5 lg:w-1/3 bg-white/95 backdrop-blur-sm shadow-2xl rounded-lg transition-all duration-1000 delay-300 transform ${
+          <div className={`w-full md:w-2/5 lg:w-1/3 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm shadow-2xl rounded-lg transition-all duration-1000 delay-300 transform ${
             isVisionSectionVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
           } ${locale === 'ar' ? 'md:mr-8 lg:mr-20' : 'md:ml-8 lg:ml-20'}`}
           >
             <div className="p-5 md:p-8 w-full">
               {/* Title */}
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 text-center mb-2 md:mb-3">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 dark:text-white text-center mb-2 md:mb-3">
                 {t("about.services.title")}
               </h2>
               
               {/* Subtitle */}
               <div className="text-center mb-6 md:mb-10">
-                <p className="text-gray-600 text-xs sm:text-sm md:text-base pb-2 border-b-2 border-red-500 inline-block font-normal px-2">
+                <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-base pb-2 border-b-2 border-red-500 inline-block font-normal px-2">
                   {t("about.services.subtitle")}
                   <br className="hidden sm:block" />
                   <span className="hidden sm:inline">{t("about.services.subtitleLine2")}</span>
@@ -256,30 +256,30 @@ export default function AboutUs({ locale }: AboutUsProps) {
               <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
                 {/* Student Circle */}
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                    <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white dark:bg-zinc-800 hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700 dark:text-teal-400" />
                   </div>
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 text-center leading-tight">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 dark:text-red-400 text-center leading-tight">
                     {t("about.services.students")}
                   </h3>
                 </div>
 
                 {/* Staff Circle */}
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                    <Users className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white dark:bg-zinc-800 hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <Users className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700 dark:text-teal-400" />
                   </div>
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 text-center leading-tight">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 dark:text-red-400 text-center leading-tight">
                     {t("about.services.staff")}
                   </h3>
                 </div>
 
                 {/* Graduate Circle */}
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                    <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 md:border-3 border-red-500 flex items-center justify-center mb-2 md:mb-3 bg-white dark:bg-zinc-800 hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-teal-700 dark:text-teal-400" />
                   </div>
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 text-center leading-tight">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-red-500 dark:text-red-400 text-center leading-tight">
                     {t("about.services.graduates")}
                   </h3>
                 </div>
